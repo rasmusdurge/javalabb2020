@@ -36,15 +36,12 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
             case EAST:
                 xCord = xCord + currentSpeed;
                 break;
-
             case NORTH:
                 yCord = yCord + currentSpeed;
                 break;
-
             case WEST:
                 xCord = xCord - currentSpeed;
                 break;
-
             case SOUTH:
                 yCord = yCord - currentSpeed;
         }
@@ -65,8 +62,6 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
             case SOUTH:
                 dir = direction.EAST;
         }
-
-
     }
 
     @Override
@@ -87,12 +82,10 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
     }
 
     protected int getNrDoors() {
-
         return nrDoors;
     }
 
     protected double getEnginePower() {
-
         return enginePower;
     }
 
@@ -101,22 +94,18 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
     }
 
     protected Color getColor() {
-
         return color;
     }
 
     protected void setColor(Color clr) {
-
         color = clr;
     }
 
     protected void startEngine() {
-
         currentSpeed = 0.1;
     }
 
     protected void stopEngine() {
-
         currentSpeed = 0;
     }
 

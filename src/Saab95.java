@@ -9,12 +9,10 @@ public class Saab95 extends Car {
     }
 
     public void setTurboOn() {
-
         turboOn = true;
     }
 
     public void setTurboOff() {
-
         turboOn = false;
     }
 
@@ -25,12 +23,10 @@ public class Saab95 extends Car {
     }
 
     public void incrementSpeed(double amount) {
-
         currentSpeed = getCurrentSpeed() + speedFactor() * amount;
     }
 
     public void decrementSpeed(double amount) {
-
         currentSpeed = getCurrentSpeed() - speedFactor() * amount;
     }
 }
