@@ -6,12 +6,19 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
     private String modelName; // The car model name
     protected double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car
+    //position
+    protected double xCord;
+    protected double yCord;
+    //riktning
+    protected direction dir;
 
-    Car(int nrDoors, Color color, double enginePower, String modelName) {
+    Car(int nrDoors, Color color, double enginePower, String modelName, int xCord, int yCord) {
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
         this.modelName = modelName;
+        this.xCord = xCord;
+        this.yCord = yCord;
         stopEngine(); //don't know if this one can be here
         dir = direction.EAST; //the car starts moving in the east direction
     }
@@ -23,12 +30,13 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
         EAST
     }
 
-    //position
-    protected double xCord;
-    protected double yCord;
-    //riktning
-    protected direction dir;
+    public double getxCord() {
+        return xCord;
+    }
 
+    public double getyCord() {
+        return yCord;
+    }
 
     @Override
     public void move() {
