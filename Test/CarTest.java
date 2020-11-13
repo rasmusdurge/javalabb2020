@@ -5,6 +5,11 @@ import java.awt.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+/**
+ * Tests for the Saab95-and Volvo240 constructor
+ * and the essential methods in the Car class, Saab95 class and Volvo240 class.
+ */
+
 public class CarTest {
     Saab95 Saab = new Saab95();
     Volvo240 Volvo = new Volvo240();

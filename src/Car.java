@@ -10,8 +10,19 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
     //position
     private double xCord;
     private double yCord;
-    //riktning
+    //direction
     private direction dir;
+
+    /**
+     * Constructor that initates car objects.
+     *
+     * @param nrDoors     The cars amount of doors.
+     * @param color       The color of the car.
+     * @param enginePower The cars engine power.
+     * @param modelName   The cars model name.
+     * @param xCord       The starting position of the car : x = 0
+     * @param yCord       The starting position of the car : y = 0
+     */
 
     Car(int nrDoors, Color color, double enginePower, String modelName, int xCord, int yCord) {
         this.nrDoors = nrDoors;
@@ -24,6 +35,11 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
         dir = direction.EAST; //the car starts moving in the east direction
     }
 
+    /**
+     * Function for movement of the car. If we call this method the
+     * car will update its position along its current direction with its currentSpeed.
+     * This is done by a switch statement.
+     */
     @Override
     public void move() {
         switch (dir) {
@@ -41,6 +57,11 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
         }
     }
 
+    /**
+     * Function that controls the direction that the car turns in.
+     * When the method is used the cars direction updates as:
+     * NORTH -> WEST -> SOUTH -> EAST -> NORTH ....
+     */
     @Override
     public void turnLeft() {
         switch (dir) { //like an if-loop
@@ -58,6 +79,9 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
         }
     }
 
+    /**
+     * Same function as turnLeft but mirrored.
+     */
     @Override
     public void turnRight() {
         switch (dir) { //like an if-loop
@@ -75,6 +99,9 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
         }
     }
 
+    /**
+     * Enum for the direction of the car.
+     */
     public enum direction {
         NORTH,
         SOUTH,
@@ -82,6 +109,9 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
         EAST
     }
 
+    /**
+     * Getters and setters for our variables.
+     */
     public int getNrDoors() {
         return nrDoors;
     }
@@ -114,14 +144,26 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
         return dir;
     }
 
+    /**
+     * Start the engine of the car, this puts the currentspeed to 0.1
+     */
     protected void startEngine() {
         currentSpeed = 0.1;
     }
 
+    /**
+     * Stop the engine, this puts the currentspeed to 0.1
+     */
     protected void stopEngine() {
         currentSpeed = 0;
     }
 
+    /**
+     * Gas method. If we call this we increase the cars currentspeed.
+     * This is done via incrementSpeed
+     *
+     * @param : amount is a factor in incrementSpeed.
+     */
     public void gas(double amount) {
         if (0 <= amount && amount <= 1) {
             incrementSpeed(amount);
@@ -130,6 +172,12 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
         }
     }
 
+    /**
+     * Same as gas but decreasing the currentSpeed of the car.
+     * brake uses decrementSpeed instead.
+     *
+     * @param amount is a factor in decrementSpeed.
+     */
     public void brake(double amount) {
         if (0 <= amount && amount <= 1) {
             decrementSpeed(amount);
@@ -138,6 +186,10 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
         }
     }
 
+    /**
+     * Three abstract method which are overridden in Volvo240/Saab95
+     * Put in moveable
+     */
     public abstract double speedFactor();
 
     protected abstract void incrementSpeed(double amount);
