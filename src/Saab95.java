@@ -28,10 +28,11 @@ public class Saab95 extends Car {
      *
      * @return enginePower
      */
+    @Override
     public double speedFactor() {
         double turbo = 1;
         if (turboOn) turbo = 1.3;
-        return enginePower * 0.01 * turbo;
+        return getEnginePower() * 0.01 * turbo;
     }
 
     /**
@@ -39,8 +40,9 @@ public class Saab95 extends Car {
      *
      * @param amount is incluced in the currentSpeed update formula.
      */
+    @Override
     public void incrementSpeed(double amount) {
-        currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+        setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
     }
 
     /**
@@ -48,7 +50,8 @@ public class Saab95 extends Car {
      *
      * @param amount is included in the currentSpeed update formula
      */
+    @Override
     public void decrementSpeed(double amount) {
-        currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+        setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
     }
 }

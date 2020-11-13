@@ -4,8 +4,8 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
     private int nrDoors; // Number of doors on the car
     private Color color; // Color of the car
     private String modelName; // The car model name
-    protected double enginePower; // Engine power of the car
-    protected double currentSpeed; // The current speed of the car
+    private double enginePower; // Engine power of the car
+    private double currentSpeed; // The current speed of the car
 
     //position
     private double xCord;
@@ -22,6 +22,8 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
      * @param modelName   The cars model name.
      * @param xCord       The starting position of the car : x = 0
      * @param yCord       The starting position of the car : y = 0
+     *                    <p>
+     *                    We assume that the constructor can handle bad user input data like negative engine power.
      */
 
     Car(int nrDoors, Color color, double enginePower, String modelName, int xCord, int yCord) {
@@ -124,6 +126,10 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
         return currentSpeed;
     }
 
+    protected void setCurrentSpeed(double speedValue) {
+        currentSpeed = speedValue;
+    }
+
     public Color getColor() {
         return color;
     }
@@ -162,7 +168,7 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
      * Gas method. If we call this we increase the cars currentspeed.
      * This is done via incrementSpeed
      *
-     * @param : amount is a factor in incrementSpeed.
+     * @param amount amount is a factor in incrementSpeed.
      */
     public void gas(double amount) {
         if (0 <= amount && amount <= 1) {
@@ -188,12 +194,10 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
 
     /**
      * Three abstract method which are overridden in Volvo240/Saab95
-     * Put in moveable
      */
     public abstract double speedFactor();
 
     protected abstract void incrementSpeed(double amount);
 
     protected abstract void decrementSpeed(double amount);
-
 }

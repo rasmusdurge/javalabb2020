@@ -6,7 +6,7 @@ public class Volvo240 extends Car {
      * Variable that is used in SpeedFactor,
      * this is only used for Volvo240
      */
-    public final static double trimFactor = 1.25;
+    private final static double trimFactor = 1.25;
 
     /**
      * Constructor for Volvo240 objects. Initiates Volvo240 objects
@@ -21,8 +21,9 @@ public class Volvo240 extends Car {
      *
      * @return enginePower times trimfactor with a set percentage.
      */
+    @Override
     public double speedFactor() {
-        return enginePower * 0.01 * trimFactor;
+        return getEnginePower() * 0.01 * trimFactor;
     }
 
     /**
@@ -33,8 +34,10 @@ public class Volvo240 extends Car {
      *
      * @param amount is incluced in the currentSpeed update formula.
      */
+    @Override
     public void incrementSpeed(double amount) {
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
+        double increasingValue = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
+        setCurrentSpeed(increasingValue);
     }
 
     /**
@@ -42,7 +45,9 @@ public class Volvo240 extends Car {
      *
      * @param amount is included in the currentSpeed update formula
      */
+    @Override
     public void decrementSpeed(double amount) {
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
+        double decreasingValue = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
+        setCurrentSpeed(decreasingValue);
     }
 }
