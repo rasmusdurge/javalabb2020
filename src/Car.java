@@ -37,7 +37,7 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
     /**
      * This method decides how big effect that the gas has when it is used to increase the cars speed
      */
-    public abstract double speedFactor();
+    protected abstract double speedFactor();
 
     /**
      * Increases the speed of the car
@@ -65,8 +65,6 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
     public void gas(double amount) {
         if (0 <= amount && amount <= 1) {
             incrementSpeed(amount);
-        } else {
-            incrementSpeed(0);
         }
     }
 
@@ -78,8 +76,6 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
     public void brake(double amount) {
         if (0 <= amount && amount <= 1) {
             decrementSpeed(amount);
-        } else {
-            decrementSpeed(0);
         }
     }
 
