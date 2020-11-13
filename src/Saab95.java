@@ -42,7 +42,11 @@ public class Saab95 extends Car {
      */
     @Override
     public void incrementSpeed(double amount) {
-        setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
+        if (amount >= 0) {
+            setCurrentSpeed(getCurrentSpeed() + speedFactor() * amount);
+        } else {
+            setCurrentSpeed(getCurrentSpeed());
+        }
     }
 
     /**
@@ -52,6 +56,10 @@ public class Saab95 extends Car {
      */
     @Override
     public void decrementSpeed(double amount) {
-        setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
+        if (amount >= 0) {
+            setCurrentSpeed(getCurrentSpeed() - speedFactor() * amount);
+        } else {
+            setCurrentSpeed(getCurrentSpeed());
+        }
     }
 }
