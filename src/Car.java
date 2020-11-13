@@ -1,9 +1,9 @@
 import java.awt.*;
 
 public abstract class Car implements Movable { //anv√§nder implementationsarv f√∂r att vi vill kunna anv√§nda instansvariablerna i volvo och saab
-    private int nrDoors; // Number of doors on the car
+    private final int nrDoors; // Number of doors on the car
     private Color color; // Color of the car
-    private String modelName; // The car model name
+    private final String modelName; // The car model name
     private double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
 
@@ -33,8 +33,85 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
         this.modelName = modelName;
         this.xCord = xCord;
         this.yCord = yCord;
-        stopEngine();
+        stopEngine(); //the current speed will start at zero
         dir = direction.EAST; //the car starts moving in the east direction
+    }
+
+    /**
+     * This method decides how big effect that the gas has when it is used to increase the cars speed
+     */
+    public abstract double speedFactor();
+
+    /**
+     * Increases the speed of the car
+     *
+     * @param amount the amount that the speed is increasing
+     */
+    private void incrementSpeed(double amount) {
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
+    }
+
+    /**
+     * Decreases the speed of the car
+     *
+     * @param amount the amount that the speed is decreasing
+     */
+    private void decrementSpeed(double amount) {
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
+    }
+
+    /**
+     * This method increases the cars current speed.
+     *
+     * @param amount amount is a factor in incrementSpeed.
+     */
+    public void gas(double amount) {
+        if (0 <= amount && amount <= 1) {
+            incrementSpeed(amount);
+        } else {
+            incrementSpeed(0);
+        }
+    }
+
+    /**
+     * This method decreases the current speed of the car.
+     *
+     * @param amount is a factor in decrementSpeed.
+     */
+    public void brake(double amount) {
+        if (0 <= amount && amount <= 1) {
+            decrementSpeed(amount);
+        } else {
+            decrementSpeed(0);
+        }
+    }
+
+    /**
+     * Starts the engine of the car
+     */
+    protected void startEngine() {
+        if (currentSpeed > 0) {
+            currentSpeed = getCurrentSpeed();
+        } else {
+            currentSpeed = 0.1;
+        }
+    }
+
+    /**
+     * Stops the engine
+     */
+    protected void stopEngine() {
+        currentSpeed = 0;
+    }
+
+    /**
+     * Enum for the direction of the car.
+     */
+    public enum direction {
+        NORTH,
+        SOUTH,
+        WEST,
+        EAST
     }
 
     /**
@@ -102,16 +179,6 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
     }
 
     /**
-     * Enum for the direction of the car.
-     */
-    public enum direction {
-        NORTH,
-        SOUTH,
-        WEST,
-        EAST
-    }
-
-    /**
      * Getters and setters for our variables.
      */
     public int getNrDoors() {
@@ -124,10 +191,6 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
 
     public double getCurrentSpeed() {
         return currentSpeed;
-    }
-
-    protected void setCurrentSpeed(double speedValue) {
-        currentSpeed = speedValue;
     }
 
     public Color getColor() {
@@ -149,55 +212,4 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
     public direction getDir() {
         return dir;
     }
-
-    /**
-     * Start the engine of the car, this puts the currentspeed to 0.1
-     */
-    protected void startEngine() {
-        currentSpeed = 0.1;
-    }
-
-    /**
-     * Stop the engine, this puts the currentspeed to 0.1
-     */
-    protected void stopEngine() {
-        currentSpeed = 0;
-    }
-
-    /**
-     * Gas method. If we call this we increase the cars currentspeed.
-     * This is done via incrementSpeed
-     *
-     * @param amount amount is a factor in incrementSpeed.
-     */
-    public void gas(double amount) {
-        if (0 <= amount && amount <= 1) {
-            incrementSpeed(amount);
-        } else {
-            incrementSpeed(0);
-        }
-    }
-
-    /**
-     * Same as gas but decreasing the currentSpeed of the car.
-     * brake uses decrementSpeed instead.
-     *
-     * @param amount is a factor in decrementSpeed.
-     */
-    public void brake(double amount) {
-        if (0 <= amount && amount <= 1) {
-            decrementSpeed(amount);
-        } else {
-            decrementSpeed(0);
-        }
-    }
-
-    /**
-     * Three abstract method which are overridden in Volvo240/Saab95
-     */
-    public abstract double speedFactor();
-
-    protected abstract void incrementSpeed(double amount);
-
-    protected abstract void decrementSpeed(double amount);
 }

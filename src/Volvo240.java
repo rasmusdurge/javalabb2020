@@ -3,59 +3,24 @@ import java.awt.*;
 public class Volvo240 extends Car {
 
     /**
-     * Variable that is used in SpeedFactor,
-     * this is only used for Volvo240
+     * Increases the speed with a factor 1.25
      */
     private final static double trimFactor = 1.25;
 
     /**
-     * Constructor for Volvo240 objects. Initiates Volvo240 objects
+     * Constructor for Volvo240 objects
      */
     public Volvo240() {
         super(4, Color.black, 100, "Volvo240", 0, 0);
     }
 
     /**
-     * Method for calculating the speedFactor for Volvo240. speedFactor
-     * is used in incrementSpeed
+     * Uses trimFactor and a constant number to increase the speed factor
      *
-     * @return enginePower times trimfactor with a set percentage.
+     * @return enginePower times 0.01 times trimfactor
      */
     @Override
     public double speedFactor() {
         return getEnginePower() * 0.01 * trimFactor;
-    }
-
-    /**
-     * Method that increases the cars currentSpeed.
-     * Takes the minimum value of getCurrentSpeed() + speedFactor()
-     * amount)
-     * and enginePower.
-     *
-     * @param amount is incluced in the currentSpeed update formula.
-     */
-    @Override
-    public void incrementSpeed(double amount) {
-        if (amount >= 0) {
-            double increasingValue = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
-            setCurrentSpeed(increasingValue);
-        } else {
-            setCurrentSpeed(getCurrentSpeed());
-        }
-    }
-
-    /**
-     * Reduces the value of currentSpeed much like incrementSpeed
-     *
-     * @param amount is included in the currentSpeed update formula
-     */
-    @Override
-    public void decrementSpeed(double amount) {
-        if (amount >= 0) {
-            double decreasingValue = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
-            setCurrentSpeed(decreasingValue);
-        } else {
-            setCurrentSpeed(getCurrentSpeed());
-        }
     }
 }
