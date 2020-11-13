@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class CarTest {
     Saab95 Saab = new Saab95();
@@ -17,5 +18,30 @@ public class CarTest {
     }
 
     public void testMove() {
+        Volvo.gas(0.5);
+        Volvo.move();
+        assertNotEquals(0, Volvo.getxCord());
+    }
+
+    public void testTurn() {
+        Saab.turnLeft();
+        assertEquals(Car.direction.NORTH, Saab.getDir());
+        Saab.turnRight();
+        assertEquals(Car.direction.EAST, Saab.getDir());
+    }
+
+    public void testGasAndBreak() {
+        assertEquals(0, Volvo.getCurrentSpeed());
+        Volvo.gas(0.7);
+        assertNotEquals(0, Volvo.getCurrentSpeed());
+        Volvo.brake(0.7);
+        assertEquals(0, Volvo.getCurrentSpeed());
+    }
+
+    public void testStartAndStop() {
+        Saab.startEngine();
+        assertNotEquals(0, Saab.getCurrentSpeed());
+        Saab.stopEngine();
+        assertEquals(0, Saab.getCurrentSpeed());
     }
 }

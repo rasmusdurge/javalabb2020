@@ -6,11 +6,12 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
     private String modelName; // The car model name
     protected double enginePower; // Engine power of the car
     protected double currentSpeed; // The current speed of the car
+
     //position
-    protected double xCord;
-    protected double yCord;
+    private double xCord;
+    private double yCord;
     //riktning
-    protected direction dir;
+    private direction dir;
 
     Car(int nrDoors, Color color, double enginePower, String modelName, int xCord, int yCord) {
         this.nrDoors = nrDoors;
@@ -19,23 +20,8 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
         this.modelName = modelName;
         this.xCord = xCord;
         this.yCord = yCord;
-        stopEngine(); //don't know if this one can be here
+        stopEngine();
         dir = direction.EAST; //the car starts moving in the east direction
-    }
-
-    public enum direction {
-        NORTH,
-        SOUTH,
-        WEST,
-        EAST
-    }
-
-    public double getxCord() {
-        return xCord;
-    }
-
-    public double getyCord() {
-        return yCord;
     }
 
     @Override
@@ -89,24 +75,43 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
         }
     }
 
-    protected int getNrDoors() {
+    public enum direction {
+        NORTH,
+        SOUTH,
+        WEST,
+        EAST
+    }
+
+    public int getNrDoors() {
         return nrDoors;
     }
 
-    protected double getEnginePower() {
+    public double getEnginePower() {
         return enginePower;
     }
 
-    protected double getCurrentSpeed() {
+    public double getCurrentSpeed() {
         return currentSpeed;
     }
 
-    protected Color getColor() {
+    public Color getColor() {
         return color;
     }
 
-    protected void setColor(Color clr) {
+    public void setColor(Color clr) {
         color = clr;
+    }
+
+    public double getxCord() {
+        return xCord;
+    }
+
+    public double getyCord() {
+        return yCord;
+    }
+
+    public direction getDir() {
+        return dir;
     }
 
     protected void startEngine() {
