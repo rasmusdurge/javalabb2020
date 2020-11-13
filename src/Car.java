@@ -6,12 +6,9 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
     private final double enginePower; // Engine power of the car
     private Color color; // Color of the car
     private double currentSpeed; // The current speed of the car
-
-    //position
-    private double xCord;
-    private double yCord;
-    //direction
-    private direction dir;
+    private double xCord; //position on the x-axis
+    private double yCord; //position on the y-axis
+    private direction dir; //the direction of the car
 
     /**
      * Constructor that initates car objects.
