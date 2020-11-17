@@ -171,9 +171,6 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
         }
     }
 
-    /**
-     * Getters and setters for our variables.
-     */
     public int getNrDoors() {
         return nrDoors;
     }

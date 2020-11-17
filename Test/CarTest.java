@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 public class CarTest {
     Saab95 Saab = new Saab95();
     Volvo240 Volvo = new Volvo240();
+    Scania scania = new Scania();
 
     @Test
     public void testConstructor() {
@@ -22,12 +23,14 @@ public class CarTest {
         assertEquals(0, Volvo.getyCord());
     }
 
+    @Test
     public void testMove() {
         Volvo.gas(0.5);
         Volvo.move();
         assertNotEquals(0, Volvo.getxCord());
     }
 
+    @Test
     public void testTurn() {
         Saab.turnLeft();
         assertEquals(Car.direction.NORTH, Saab.getDir());
@@ -35,6 +38,7 @@ public class CarTest {
         assertEquals(Car.direction.EAST, Saab.getDir());
     }
 
+    @Test
     public void testGasAndBreak() {
         assertEquals(0, Volvo.getCurrentSpeed());
         Volvo.gas(0.7);
@@ -43,10 +47,21 @@ public class CarTest {
         assertEquals(0, Volvo.getCurrentSpeed());
     }
 
+    @Test
     public void testStartAndStop() {
         Saab.startEngine();
         assertNotEquals(0, Saab.getCurrentSpeed());
         Saab.stopEngine();
         assertEquals(0, Saab.getCurrentSpeed());
+    }
+
+    @Test
+    public void testCargoTiltUpAndDown() {
+        scania.cargoTiltUp(30);
+        assertEquals(30, scania.getCurrentTilt());
+        scania.cargoTiltDown(20);
+        assertEquals(20, scania.getCurrentTilt());
+        scania.cargoTiltDown(-10);
+        assertNotEquals(-10, scania.getCurrentTilt());
     }
 }
