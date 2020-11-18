@@ -202,4 +202,8 @@ public abstract class Car implements Movable { //anv√§nder implementationsarv f√
     public direction getDir() {
         return dir;
     }
+
+    public boolean getCargo() {
+        return cargo;
+    }
 }

@@ -57,11 +57,11 @@ public class CarTest {
 
     @Test
     public void testCargoTiltUpAndDown() {
-        scania.cargoTiltUp(30);
+        scania.putTiltUp(30);
         assertEquals(30, scania.getCurrentTilt());
-        scania.cargoTiltDown(20);
+        scania.putTiltDown(20);
         assertEquals(20, scania.getCurrentTilt());
-        scania.cargoTiltDown(-10);
+        scania.putTiltDown(-10);
         assertNotEquals(-10, scania.getCurrentTilt());
     }
 }

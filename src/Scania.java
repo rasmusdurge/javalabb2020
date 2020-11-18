@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Scania extends Car implements TiltFunctions {
+public class Scania extends Car implements CargoFunctions {
     private double currentTilt;
     private static final double INITIAL = 0;
     private static final double MAX = 70;
@@ -18,7 +18,8 @@ public class Scania extends Car implements TiltFunctions {
      * Method to change the tilt of the cargo.
      * @param changeTiltTo to what degree you want to set the tilt to
      */
-    public void cargoTiltUp(double changeTiltTo) {
+
+    public void tiltUp(double changeTiltTo) {
         if (getCurrentSpeed() == 0) {
             if (changeTiltTo >= currentTilt && changeTiltTo <= MAX) {
                 currentTilt = changeTiltTo;
@@ -26,7 +27,7 @@ public class Scania extends Car implements TiltFunctions {
         }
     }
 
-    public void cargoTiltDown(double changeTiltTo){
+    public void tiltDown(double changeTiltTo){
         if (getCurrentSpeed() == 0) {
             if (changeTiltTo <= getCurrentTilt() && changeTiltTo >= INITIAL)
                 currentTilt = changeTiltTo;
