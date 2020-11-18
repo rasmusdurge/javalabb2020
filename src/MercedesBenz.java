@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class MercedesBenz extends Car implements TiltFunctions {
     private boolean rampUp;
     private List<Car> cars;
-
+//Hej Amanda, och rasmus?? ;(
     /**
      * Constructor for CarTransport objects
      */
