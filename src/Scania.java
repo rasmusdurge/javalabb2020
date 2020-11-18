@@ -15,10 +15,10 @@ public class Scania extends Car implements TiltFunctions {
     }
 
     /**
-     * Mathod to change the tilt of the cargo.
+     * Method to change the tilt of the cargo.
      * @param changeTiltTo to what degree you want to set the tilt to
      */
-    public void cargoTiltUp(double changeTiltTo) { //behövs specifika höj-och sänkmetoder?
+    public void cargoTiltUp(double changeTiltTo) {
         if (getCurrentSpeed() == 0) {
             if (changeTiltTo >= currentTilt && changeTiltTo <= MAX) {
                 currentTilt = changeTiltTo;
@@ -31,7 +31,6 @@ public class Scania extends Car implements TiltFunctions {
             if (changeTiltTo <= getCurrentTilt() && changeTiltTo >= INITIAL)
                 currentTilt = changeTiltTo;
         }
-
     }
 
     @Override
