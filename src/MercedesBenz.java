@@ -19,11 +19,13 @@ public class MercedesBenz extends Car implements CargoFunctions {
 
     //@Override
     public void putTiltUp() {
+        if (getCurrentSpeed() == 0)
         rampUp = true;
     }
 
     //@Override
     public void putTiltDown() {
+        if (getCurrentSpeed() == 0)
         rampUp = false;
     }
 
@@ -32,15 +34,33 @@ public class MercedesBenz extends Car implements CargoFunctions {
             if (cars.size() < loadingCapacity) {
                 if (!haveCargo) {
                     if (!rampUp && getCurrentSpeed() == 0) {
+                        car.setxCord(getxCord());
+                        car.setyCord(getyCord());
                         cars.add(car);
                     }
                 }
             }
         }
     }
-
-    public void unloadCar() {
-
+    public void unloadCar(int i) {
+        if (rampUp == false){
+            for (int j = cars.size() -1 ; j < i ; i-- ){
+                switch (getDir()){
+                    case EAST:
+                        cars.get(j).setxCord(-1);
+                        break;
+                    case WEST:
+                        cars.get(j).setxCord(1);
+                        break;
+                    case NORTH:
+                        cars.get(j).setyCord(-1);
+                        break;
+                    case SOUTH:
+                        cars.get(j).setyCord(1);
+                }
+                cars.remove(j);
+            }
+        }
     }
 
     public boolean loadingDistance(Car car) {

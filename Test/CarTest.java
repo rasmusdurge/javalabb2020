@@ -14,6 +14,7 @@ public class CarTest {
     Saab95 Saab = new Saab95();
     Volvo240 Volvo = new Volvo240();
     Scania scania = new Scania();
+    MercedesBenz mercedesBenz = new MercedesBenz();
 
     @Test
     public void testConstructor() {
@@ -57,11 +58,16 @@ public class CarTest {
 
     @Test
     public void testCargoTiltUpAndDown() {
-        scania.putTiltUp(30);
+        scania.tiltUp(30);
         assertEquals(30, scania.getCurrentTilt());
-        scania.putTiltDown(20);
+        scania.tiltDown(20);
         assertEquals(20, scania.getCurrentTilt());
-        scania.putTiltDown(-10);
+        scania.tiltDown(-10);
         assertNotEquals(-10, scania.getCurrentTilt());
     }
+    @Test
+    public void testLoadMercedes(){
+
+    }
+
 }
