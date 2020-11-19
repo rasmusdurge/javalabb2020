@@ -42,6 +42,7 @@ public class MercedesBenz extends Car implements CargoFunctions {
             }
         }
     }
+    //hej
     public void unloadCar(int i) {
         if (rampUp == false){
             for (int j = cars.size() -1 ; j < i ; i-- ){

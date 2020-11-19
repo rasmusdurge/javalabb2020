@@ -8,7 +8,7 @@ public class Workshop<C extends Car>{
     public Workshop(int workshopSize) {
     carsInWorkshop = new ArrayList<>(this.workshopSize = workshopSize);
     }
-
+    //hej
     /**
      * Method for leaving a car at a mixed workshop.
      * @param car the car that is left at the workshop
