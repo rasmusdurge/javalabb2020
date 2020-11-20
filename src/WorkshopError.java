@@ -1,12 +1,17 @@
 public class WorkshopError {
 
+    /**
+     * Main-method that initiates a volvo- and saab-object and also a volvoworkshop-object.
+     * Using the method leaveCarAtWorkshop to try and leave a volvo/saab at the workshop.
+     * @param args argument.
+     */
     public static void main(String[] args) {
-        VolvoWorkshop volvoWorkshop = new VolvoWorkshop();
+
+        Workshop<Volvo240> VolvoWorkshop = new Workshop(25);
         Saab95 saab = new Saab95();
         Volvo240 volvo = new Volvo240();
-        //hej
-        volvoWorkshop.leaveCarAtWorkshop(volvo);
-        System.out.println("Don't come here with that trash!");
+
+        VolvoWorkshop.leaveCarAtWorkshop(volvo);
 
     }
 }

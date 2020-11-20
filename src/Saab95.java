@@ -1,10 +1,11 @@
 import java.awt.*;
 
-public class Saab95 extends Car {
+public class Saab95 extends Car implements PersonalVehicle{
 
     /**
      * Increases the effect of SpeedFactor
      */
+
     private boolean turboOn;
 
     /**

@@ -2,8 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests for the Saab95-and Volvo240 constructor
@@ -66,8 +65,37 @@ public class CarTest {
         assertNotEquals(-10, scania.getCurrentTilt());
     }
     @Test
-    public void testLoadMercedes(){
+    public void testMercedes(){
+        mercedesBenz.startEngine();
+        assertNotEquals(0,mercedesBenz.getCurrentSpeed());
+        mercedesBenz.move();
+        assertNotEquals(0,mercedesBenz.getxCord());
+    }
+    @Test
+    public void testMercedesTilt(){
+        assertTrue(mercedesBenz.getRampUp());
+        mercedesBenz.putRampDown();
+        assertFalse(mercedesBenz.getRampUp());
+    }
+    @Test
+    public void testMercedesLoad(){
+        mercedesBenz.stopEngine();
+        mercedesBenz.putRampDown();
+        mercedesBenz.loadCar(Volvo);
+        mercedesBenz.loadCar(scania);
+       assertEquals(1, mercedesBenz.getCarsSize());
+    }
+    @Test
+    public void testMercedesUnload(){
+        mercedesBenz.stopEngine();
+        mercedesBenz.putRampDown();
+        mercedesBenz.loadCar(Volvo);
+        mercedesBenz.loadCar(Saab);
+        mercedesBenz.unloadCar(2);
+        assertEquals(0,mercedesBenz.getCarsSize());
 
     }
+
+
 
 }

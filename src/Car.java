@@ -1,6 +1,7 @@
 import java.awt.*;
 
 public abstract class Car implements Movable { //använder implementationsarv för att vi vill kunna använda instansvariablerna i volvo och saab
+    //private double weight;
     private final int nrDoors; // Number of doors on the car
     private final String modelName; // The car model name
     private final double enginePower; // Engine power of the car
@@ -9,6 +10,8 @@ public abstract class Car implements Movable { //använder implementationsarv f�
     private double xCord; //position on the x-axis
     private double yCord; //position on the y-axis
     private direction dir; //the direction of the car
+
+
 
     /**
      * Constructor that initates car objects.
@@ -22,7 +25,7 @@ public abstract class Car implements Movable { //använder implementationsarv f�
      *                    <p>
      *                    We assume that the constructor can handle bad user input data like negative engine power.
      */
-
+//lägg till weight i parameter?
     Car(int nrDoors, Color color, double enginePower, String modelName, int xCord, int yCord) {
         this.nrDoors = nrDoors;
         this.color = color;
@@ -187,7 +190,7 @@ public abstract class Car implements Movable { //använder implementationsarv f�
         return color;
     }
 
-    public void setColor(Color clr) {
+    public void setCol(Color clr) {
         color = clr;
     }
 
@@ -202,13 +205,12 @@ public abstract class Car implements Movable { //använder implementationsarv f�
     public direction getDir() {
         return dir;
     }
+
     protected void setxCord(double x){
         xCord = xCord + x;
     }
-    protected void setyCord(double y){
-        yCord = yCord + y;
 
+    protected void setyCord(double y){ yCord = yCord + y;
     }
-
 
 }
