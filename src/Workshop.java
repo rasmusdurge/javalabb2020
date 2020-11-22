@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Workshop<C extends Car>{
+public class Workshop<C extends MotorVehicle>{
     private int workshopSize; //The amount of cars that the workshop can take in
     ArrayList<C> carsInWorkshop; //A list of the cars that is left at the workshop
 
@@ -15,7 +15,9 @@ public class Workshop<C extends Car>{
      * Method for leaving a car at a mixed workshop.
      * @param car the car that is left at the workshop
      */
-    void leaveCarAtWorkshop(C car) {
+
+
+    public void leaveCarAtWorkshop(C car) {
         carsInWorkshop.add(car);
     }
 
@@ -26,6 +28,4 @@ public class Workshop<C extends Car>{
     C pickUpCar() {
         return carsInWorkshop.remove(0);
     }
-
-
 }

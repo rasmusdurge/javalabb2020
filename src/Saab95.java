@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Saab95 extends Car implements PersonalVehicle{
+public class Saab95 extends MotorVehicle {
 
     /**
      * Increases the effect of SpeedFactor
@@ -12,7 +12,7 @@ public class Saab95 extends Car implements PersonalVehicle{
      * Constructor for Saab95 objects
      */
     public Saab95() {
-        super(2, Color.red, 125, "Saab95", 10, 10);
+        super(2, Color.red, 125, "Saab95", 1000, 10,10);
         turboOn = false;
     }
 

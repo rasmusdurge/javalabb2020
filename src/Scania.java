@@ -1,16 +1,16 @@
 import java.awt.*;
 
-public class Scania extends Car{
+public class Scania extends MotorVehicle implements tilt {
     private double currentTilt; //The tilt of the cars cargo
     private static final double INITIAL = 0; //The minimum tilt of the cargo is equal to zero degrees. This is the initial tilt of the cargo.
     private static final double MAX = 70; //The maximum tilt of the cargo is equal to 70 degrees
-    private boolean haveCargo;
+
 
     /**
      * Constructor for Scania objects
      */
     public Scania() {
-        super(2, Color.blue, 150, "Scania", 0, 0);
+        super(2, Color.blue, 150, "Scania", 10000, 0,0);
         this.currentTilt = INITIAL;
         stopEngine();
         //hårdkoda weight här så att den inte kan lasta sig själv ex weight + 5000
@@ -20,10 +20,11 @@ public class Scania extends Car{
      * Method to change the tilt of the cargo that is higher than the original tilt.
      * @param changeTiltTo to what degree you want to set the tilt to
      */
+    @Override
     public void tiltUp(double changeTiltTo) {
         if (getCurrentSpeed() == 0) {
-            if (changeTiltTo >= currentTilt && changeTiltTo <= MAX) {
-                currentTilt = changeTiltTo;
+                    if (changeTiltTo >= currentTilt && changeTiltTo <= MAX) {
+                        currentTilt = changeTiltTo;
             }
         }
     }
@@ -32,6 +33,7 @@ public class Scania extends Car{
      * Same as tiltUp but to a tilt that is lower than the original tilt.
 * @param changeTiltTo to what degree you want to set the tilt to.
      */
+    @Override
     public void tiltDown(double changeTiltTo){
         if (getCurrentSpeed() == 0) {
             if (changeTiltTo <= getCurrentTilt() && changeTiltTo >= INITIAL)
@@ -55,8 +57,16 @@ public class Scania extends Car{
         return getEnginePower() * 0.01;
     }
 
+    public boolean rampUp() {
+        if (currentTilt == 0) {
+            return true;
+        }
+        return false;
+    }
+
     public double getCurrentTilt() {
         return currentTilt;
     }
+
 
 }

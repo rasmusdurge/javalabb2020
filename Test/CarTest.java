@@ -33,9 +33,9 @@ public class CarTest {
     @Test
     public void testTurn() {
         Saab.turnLeft();
-        assertEquals(Car.direction.NORTH, Saab.getDir());
+        assertEquals(MotorVehicle.direction.NORTH, Saab.getDir());
         Saab.turnRight();
-        assertEquals(Car.direction.EAST, Saab.getDir());
+        assertEquals(MotorVehicle.direction.EAST, Saab.getDir());
     }
 
     @Test
@@ -78,24 +78,41 @@ public class CarTest {
         assertFalse(mercedesBenz.getRampUp());
     }
     @Test
-    public void testMercedesLoad(){
+    public void testLoadCar(){
         mercedesBenz.stopEngine();
         mercedesBenz.putRampDown();
         mercedesBenz.loadCar(Volvo);
         mercedesBenz.loadCar(scania);
-       assertEquals(1, mercedesBenz.getCarsSize());
+        assertEquals(1, mercedesBenz.getCarsSize());
     }
     @Test
-    public void testMercedesUnload(){
+    public void testUnloadCar(){
         mercedesBenz.stopEngine();
         mercedesBenz.putRampDown();
+        //mercedesBenz.loadCar(Volvo);
         mercedesBenz.loadCar(Volvo);
-        mercedesBenz.loadCar(Saab);
-        mercedesBenz.unloadCar(2);
+        mercedesBenz.unloadCar();
         assertEquals(0,mercedesBenz.getCarsSize());
+    }
+    @Test
+    public void testMercedesGas(){
+        mercedesBenz.stopEngine();
+        assertEquals(0,mercedesBenz.getCurrentSpeed());
+        mercedesBenz.gas(0.7);
+        assertNotEquals(0,mercedesBenz.getCurrentSpeed());
+        mercedesBenz.stopEngine();
+        assertEquals(0,mercedesBenz.getCurrentSpeed());
+        mercedesBenz.putRampDown();
+        mercedesBenz.gas(0.7);
+        assertEquals(0,mercedesBenz.getCurrentSpeed());
+    }
+    @Test
+    public void testLoadingCapacity(){
+        mercedesBenz.putRampDown();
+        for (int i=0; i<=20; i++) {
+            mercedesBenz.loadCar(Volvo);
+        }
+        assertEquals(10,mercedesBenz.getCarsSize());
 
     }
-
-
-
 }

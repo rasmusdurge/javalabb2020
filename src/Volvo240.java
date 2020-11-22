@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Volvo240 extends Car implements PersonalVehicle {
+public class Volvo240 extends MotorVehicle {
 
     /**
      * Increases the speed with a factor 1.25
@@ -12,7 +12,7 @@ public class Volvo240 extends Car implements PersonalVehicle {
      * Constructor for Volvo240 objects
      */
     public Volvo240() {
-        super(4, Color.black, 100, "Volvo240", 1, 1);
+        super(4, Color.black, 100, "Volvo240", 1000, 0,0);
     }
 
     /**
